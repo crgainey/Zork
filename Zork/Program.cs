@@ -9,19 +9,10 @@ namespace Zork
             Console.WriteLine("Welcome to Zork!");
 
             string inputString = Console.ReadLine();
-            inputString = inputString.ToUpper();
-            if(inputString == "QUIT")
-            {
-                Console.WriteLine("Thank you for playing");
-            }
-            else if(inputString == "LOOK")
-            {
-                Console.WriteLine("This is an open field west of a white house, with a boarded front door. \nA rubber may saying 'Welcome to Zork!' lies by the door.");
-            }
-            else
-            {
-                Console.WriteLine("Unrecongnized command.");
-            }
+            Commands command = ToCommand(inputString.Trim());
+            Console.WriteLine(command);
         }
+
+        static Commands ToCommand(string commandString) => Enum.TryParse<Commands>(commandString, true, out Commands result) ? result : Commands.UNKNOWN;
     }
 }
