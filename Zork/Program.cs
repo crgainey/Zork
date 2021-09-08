@@ -4,6 +4,14 @@ namespace Zork
 {
     class Program
     {
+        static string Location
+        {
+            get
+            {
+                return Rooms[LocationColumn];
+            }
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Zork!");
@@ -11,7 +19,7 @@ namespace Zork
             Commands command = Commands.UNKNOWN;
             while(command != Commands.QUIT)
             {
-                Console.Write("> ");
+                Console.Write($"{Location}\n> ");
                 command = ToCommand(Console.ReadLine().Trim());
 
                 string outputString;
@@ -29,7 +37,7 @@ namespace Zork
                     case Commands.SOUTH:
                     case Commands.EAST:
                     case Commands.WEST:
-                        outputString = $"You moved {command.ToString()}.";
+                        outputString = Move(command) ? $"You moved {command}." : "The way is shut!";
                         break;
 
                     default:
@@ -42,6 +50,34 @@ namespace Zork
             
         }
 
+        static bool Move(Commands command)
+        {
+            bool didMove = false;
+
+            switch (command)
+            {
+                case Commands.NORTH:
+                case Commands.SOUTH:
+                    break;
+
+                case Commands.EAST when LocationColumn < Rooms.Length - 1:
+                    LocationColumn++;
+                    didMove = true;
+                    break;
+
+                case Commands.WEST when LocationColumn > 0:
+                    LocationColumn--;
+                    didMove = true;
+                    break;
+            }
+
+            return didMove;
+        }
+
         static Commands ToCommand(string commandString) => Enum.TryParse<Commands>(commandString, true, out Commands result) ? result : Commands.UNKNOWN;
+
+        static string[] Rooms = { "Forest", "West of House", "Behind House", "Clearing", "Canyon View"};
+        static int LocationColumn = 1;
+
     }
 }
