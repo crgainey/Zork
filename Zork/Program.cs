@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
 
 namespace Zork
 {
@@ -106,7 +105,6 @@ namespace Zork
                 roomMap.Add(room.Name, room);
             }
 
-            /*
             string[] lines = File.ReadAllLines(roomDescriptionFileName);
             foreach(string line in lines)
             {
@@ -118,7 +116,7 @@ namespace Zork
 
                 (string name, string description) = (fields[(int)Feilds.Name], fields[(int)Feilds.Description]);
                 roomMap[name].Description = description; 
-            }*/
+            }
         }
 
         static readonly Room[,] Rooms =
