@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace Zork
 {
@@ -18,7 +19,7 @@ namespace Zork
         {
             Console.WriteLine("Welcome to Zork!");
 
-            const string roomDecsriptionFileName = "Rooms.txt";
+            const string roomDecsriptionFileName = "Rooms.json";
             InitializeRoomDescriptions(roomDecsriptionFileName);
 
             Room perviousRoom = null;
@@ -97,35 +98,10 @@ namespace Zork
 
         static bool IsDirection(Commands command) => Directions.Contains(command);
 
-        static void InitializeRoomDescriptions(string roomDescriptionFileName)
-        {
-            var roomMap = new Dictionary<string, Room>();
-            foreach (Room room in Rooms)
-            {
-                roomMap.Add(room.Name, room);
-            }
+        static void InitializeRoomDescriptions(string roomDescriptionFileName) => 
+            Rooms = JsonConvert.DeserializeObject<Room[,]>(File.ReadAllText(roomDescriptionFileName));
 
-            string[] lines = File.ReadAllLines(roomDescriptionFileName);
-            foreach(string line in lines)
-            {
-                const string delimiter = "##";
-                const int expectedFeildCount = 2;
-
-                string [] fields = line.Split(delimiter);
-                Assert.IsTrue(fields.Length == expectedFeildCount);
-
-                (string name, string description) = (fields[(int)Feilds.Name], fields[(int)Feilds.Description]);
-                roomMap[name].Description = description; 
-            }
-        }
-
-        static readonly Room[,] Rooms =
-        {
-            {new Room("Rocky Trail"),  new Room( "South of House"), new Room( "Canyon View") },
-            {new Room("Forest"),       new Room( "West of House"),  new Room( "Behind House") },
-            {new Room("Dense Woods"),  new Room( "North of House"), new Room( "Clearing") }
-
-        };
+        static Room[,] Rooms;
 
         static readonly List<Commands> Directions = new List<Commands>
         {
