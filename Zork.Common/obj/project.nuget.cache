@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "hm5A6PUL6mlJiLG1WgGthgq97cCPaYUjDmMLCkqtnrygkVH3z4W8weC1J9O3GbnAgVG4LVHjC5QfriZyVsFLfA==",
+  "dgSpecHash": "1wAnk1Y6Ga0XnJkg5JTi7OI30kI+0qt7cAwmH1EC02xfYRBhtjjoeWOezaQmEpQsHWfZFYD0FWfp55rr0oNnkQ==",
   "success": true,
-  "projectFilePath": "E:\\Fall2021\\DIG4778c\\Git\\Zork\\Zork.Common\\Zork.Common.csproj",
+  "projectFilePath": "C:\\Users\\mikae\\Documents\\Zork(Shared)\\Zork(Shared)\\Zork.Common\\Zork.Common.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\cynth\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\cynth\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
-    "C:\\Users\\cynth\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\mikae\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\mikae\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\mikae\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }

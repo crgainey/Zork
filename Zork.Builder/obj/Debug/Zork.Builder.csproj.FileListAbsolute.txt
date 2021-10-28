@@ -1,0 +1,13 @@
+C:\Users\mikae\Documents\Zork(Shared)\Zork(Shared)\Zork.Builder\bin\Debug\Zork.Builder.exe.config
+C:\Users\mikae\Documents\Zork(Shared)\Zork(Shared)\Zork.Builder\bin\Debug\Zork.Builder.exe
+C:\Users\mikae\Documents\Zork(Shared)\Zork(Shared)\Zork.Builder\bin\Debug\Zork.Builder.pdb
+C:\Users\mikae\Documents\Zork(Shared)\Zork(Shared)\Zork.Builder\bin\Debug\Zork.Common.dll
+C:\Users\mikae\Documents\Zork(Shared)\Zork(Shared)\Zork.Builder\bin\Debug\Zork.Common.pdb
+C:\Users\mikae\Documents\Zork(Shared)\Zork(Shared)\Zork.Builder\obj\Debug\Zork.Builder.csprojAssemblyReference.cache
+C:\Users\mikae\Documents\Zork(Shared)\Zork(Shared)\Zork.Builder\obj\Debug\Zork.Builder.ZorkBuilder.resources
+C:\Users\mikae\Documents\Zork(Shared)\Zork(Shared)\Zork.Builder\obj\Debug\Zork.Builder.Properties.Resources.resources
+C:\Users\mikae\Documents\Zork(Shared)\Zork(Shared)\Zork.Builder\obj\Debug\Zork.Builder.csproj.GenerateResource.cache
+C:\Users\mikae\Documents\Zork(Shared)\Zork(Shared)\Zork.Builder\obj\Debug\Zork.Builder.csproj.CoreCompileInputs.cache
+C:\Users\mikae\Documents\Zork(Shared)\Zork(Shared)\Zork.Builder\obj\Debug\Zork.Builder.csproj.CopyComplete
+C:\Users\mikae\Documents\Zork(Shared)\Zork(Shared)\Zork.Builder\obj\Debug\Zork.Builder.exe
+C:\Users\mikae\Documents\Zork(Shared)\Zork(Shared)\Zork.Builder\obj\Debug\Zork.Builder.pdb
