@@ -1,0 +1,9 @@
+E:\Fall2021\DIG4778c\Git\Zork\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.GeneratedMSBuildEditorConfig.editorconfig
+E:\Fall2021\DIG4778c\Git\Zork\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.AssemblyInfoInputs.cache
+E:\Fall2021\DIG4778c\Git\Zork\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.AssemblyInfo.cs
+E:\Fall2021\DIG4778c\Git\Zork\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.csproj.CoreCompileInputs.cache
+E:\Fall2021\DIG4778c\Git\Zork\Zork.Common\bin\Debug\netstandard2.0\Zork.Common.deps.json
+E:\Fall2021\DIG4778c\Git\Zork\Zork.Common\bin\Debug\netstandard2.0\Zork.Common.dll
+E:\Fall2021\DIG4778c\Git\Zork\Zork.Common\bin\Debug\netstandard2.0\Zork.Common.pdb
+E:\Fall2021\DIG4778c\Git\Zork\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.dll
+E:\Fall2021\DIG4778c\Git\Zork\Zork.Common\obj\Debug\netstandard2.0\Zork.Common.pdb
