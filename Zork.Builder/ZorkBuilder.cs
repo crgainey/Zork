@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Zork;
 using System.IO;
@@ -15,14 +8,15 @@ namespace Zork.Builder
 {
     public partial class ZorkBuilder : Form
     {
+        internal GameViewModel ViewModel { get; private set; }
+
         public ZorkBuilder()
         {
             InitializeComponent();
+            ViewModel = new GameViewModel();
         }
 
-
-        
-
+        #region Menu Strip Items
         private void newFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -33,7 +27,7 @@ namespace Zork.Builder
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string jsonString = File.ReadAllText(openFileDialog.FileName);
-                JsonConvert.DeserializeObject<World>(jsonString);
+                ViewModel.Game = JsonConvert.DeserializeObject<Game>(jsonString);
             }
         }
 
@@ -42,12 +36,18 @@ namespace Zork.Builder
 
         }
 
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
+        #endregion Menu Strip
 
-
+        #region Buttons
         private void Add_Click(object sender, EventArgs e)
         {
 
@@ -57,10 +57,6 @@ namespace Zork.Builder
         {
 
         }
-
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        #endregion Buttons
     }
 }

@@ -31,7 +31,6 @@ namespace Zork.Builder
         {
             System.Windows.Forms.MenuStrip mainMenuStrip;
             System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-            System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
             System.Windows.Forms.ToolStripMenuItem newFileToolStripMenuItem;
             System.Windows.Forms.ToolStripMenuItem openFileToolStripMenuItem;
             System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
@@ -39,6 +38,11 @@ namespace Zork.Builder
             System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
             System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
             System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+            System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+            this.welcomeMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.startingLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.deleteButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
@@ -49,14 +53,9 @@ namespace Zork.Builder
             this.worldTabs = new System.Windows.Forms.TabControl();
             this.neighborsList = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.welcomeMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.startingLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             mainMenuStrip = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             newFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
@@ -64,11 +63,125 @@ namespace Zork.Builder
             saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            mainMenuStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.worldTabs.SuspendLayout();
-            mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // mainMenuStrip
+            // 
+            mainMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            fileToolStripMenuItem,
+            editToolStripMenuItem,
+            this.runToolStripMenuItem});
+            mainMenuStrip.Location = new System.Drawing.Point(0, 0);
+            mainMenuStrip.Name = "mainMenuStrip";
+            mainMenuStrip.Size = new System.Drawing.Size(689, 24);
+            mainMenuStrip.TabIndex = 1;
+            mainMenuStrip.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            newFileToolStripMenuItem,
+            openFileToolStripMenuItem,
+            toolStripMenuItem3,
+            saveFileToolStripMenuItem,
+            saveAsToolStripMenuItem,
+            toolStripMenuItem4,
+            exitToolStripMenuItem});
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            fileToolStripMenuItem.Text = "&File";
+            // 
+            // newFileToolStripMenuItem
+            // 
+            newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
+            newFileToolStripMenuItem.ShortcutKeyDisplayString = "";
+            newFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            newFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            newFileToolStripMenuItem.Text = "&New File";
+            newFileToolStripMenuItem.Click += new System.EventHandler(this.newFileToolStripMenuItem_Click);
+            // 
+            // openFileToolStripMenuItem
+            // 
+            openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
+            openFileToolStripMenuItem.ShortcutKeyDisplayString = "";
+            openFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            openFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            openFileToolStripMenuItem.Text = "&Open File";
+            openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            toolStripMenuItem3.Name = "toolStripMenuItem3";
+            toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            // 
+            // saveFileToolStripMenuItem
+            // 
+            saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
+            saveFileToolStripMenuItem.ShortcutKeyDisplayString = "";
+            saveFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            saveFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            saveFileToolStripMenuItem.Text = "&Save File";
+            saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            saveAsToolStripMenuItem.Text = "Save As";
+            saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            toolStripMenuItem4.Name = "toolStripMenuItem4";
+            toolStripMenuItem4.Size = new System.Drawing.Size(177, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            exitToolStripMenuItem.ShortcutKeyDisplayString = "";
+            exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            exitToolStripMenuItem.Text = "E&xit";
+            exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.welcomeMessageToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.startingLocationToolStripMenuItem});
+            editToolStripMenuItem.Name = "editToolStripMenuItem";
+            editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            editToolStripMenuItem.Text = "&Edit";
+            // 
+            // welcomeMessageToolStripMenuItem
+            // 
+            this.welcomeMessageToolStripMenuItem.Name = "welcomeMessageToolStripMenuItem";
+            this.welcomeMessageToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.welcomeMessageToolStripMenuItem.Text = "Welcome Message";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(170, 6);
+            // 
+            // startingLocationToolStripMenuItem
+            // 
+            this.startingLocationToolStripMenuItem.Name = "startingLocationToolStripMenuItem";
+            this.startingLocationToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.startingLocationToolStripMenuItem.Text = "Starting Location";
+            // 
+            // runToolStripMenuItem
+            // 
+            this.runToolStripMenuItem.Name = "runToolStripMenuItem";
+            this.runToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.runToolStripMenuItem.Text = "&Run";
             // 
             // groupBox1
             // 
@@ -169,118 +282,6 @@ namespace Zork.Builder
             this.tabPage2.Text = "Items";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // mainMenuStrip
-            // 
-            mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            fileToolStripMenuItem,
-            editToolStripMenuItem,
-            this.runToolStripMenuItem});
-            mainMenuStrip.Location = new System.Drawing.Point(0, 0);
-            mainMenuStrip.Name = "mainMenuStrip";
-            mainMenuStrip.Size = new System.Drawing.Size(689, 24);
-            mainMenuStrip.TabIndex = 1;
-            mainMenuStrip.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            newFileToolStripMenuItem,
-            openFileToolStripMenuItem,
-            toolStripMenuItem3,
-            saveFileToolStripMenuItem,
-            saveAsToolStripMenuItem,
-            toolStripMenuItem4,
-            exitToolStripMenuItem});
-            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            fileToolStripMenuItem.Text = "&File";
-            // 
-            // editToolStripMenuItem
-            // 
-            editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.welcomeMessageToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.startingLocationToolStripMenuItem});
-            editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            editToolStripMenuItem.Text = "&Edit";
-            // 
-            // welcomeMessageToolStripMenuItem
-            // 
-            this.welcomeMessageToolStripMenuItem.Name = "welcomeMessageToolStripMenuItem";
-            this.welcomeMessageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.welcomeMessageToolStripMenuItem.Text = "Welcome Message";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // startingLocationToolStripMenuItem
-            // 
-            this.startingLocationToolStripMenuItem.Name = "startingLocationToolStripMenuItem";
-            this.startingLocationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.startingLocationToolStripMenuItem.Text = "Starting Location";
-            // 
-            // runToolStripMenuItem
-            // 
-            this.runToolStripMenuItem.Name = "runToolStripMenuItem";
-            this.runToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-            this.runToolStripMenuItem.Text = "&Run";
-            // 
-            // newFileToolStripMenuItem
-            // 
-            newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
-            newFileToolStripMenuItem.ShortcutKeyDisplayString = "";
-            newFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            newFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            newFileToolStripMenuItem.Text = "&New File";
-            newFileToolStripMenuItem.Click += new System.EventHandler(this.newFileToolStripMenuItem_Click);
-            // 
-            // openFileToolStripMenuItem
-            // 
-            openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            openFileToolStripMenuItem.ShortcutKeyDisplayString = "";
-            openFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            openFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            openFileToolStripMenuItem.Text = "&Open File";
-            openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
-            // 
-            // saveFileToolStripMenuItem
-            // 
-            saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            saveFileToolStripMenuItem.ShortcutKeyDisplayString = "";
-            saveFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            saveFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            saveFileToolStripMenuItem.Text = "&Save File";
-            saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
-            // 
-            // saveAsToolStripMenuItem
-            // 
-            saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            saveAsToolStripMenuItem.Text = "Save As";
-            saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem4
-            // 
-            toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new System.Drawing.Size(177, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.ShortcutKeyDisplayString = "";
-            exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            exitToolStripMenuItem.Text = "E&xit";
-            exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
             // openFileDialog
             // 
             this.openFileDialog.Filter = "JSON Files|*.json";
@@ -299,12 +300,12 @@ namespace Zork.Builder
             this.Name = "ZorkBuilder";
             this.ShowInTaskbar = false;
             this.Text = "Zork Builder";
+            mainMenuStrip.ResumeLayout(false);
+            mainMenuStrip.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.worldTabs.ResumeLayout(false);
-            mainMenuStrip.ResumeLayout(false);
-            mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
