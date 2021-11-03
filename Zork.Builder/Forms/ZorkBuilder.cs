@@ -27,7 +27,7 @@ namespace Zork.Builder
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string jsonString = File.ReadAllText(openFileDialog.FileName);
-                ViewModel.Game = JsonConvert.DeserializeObject<Game>(jsonString);
+                Game game = JsonConvert.DeserializeObject<Game>(jsonString);
             }
         }
 
@@ -58,5 +58,9 @@ namespace Zork.Builder
 
         }
         #endregion Buttons
+
+
+        private GameViewModel _viewModel;
     }
+
 }

@@ -102,7 +102,7 @@ namespace Zork.Builder
             newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
             newFileToolStripMenuItem.ShortcutKeyDisplayString = "";
             newFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            newFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            newFileToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             newFileToolStripMenuItem.Text = "&New File";
             newFileToolStripMenuItem.Click += new System.EventHandler(this.newFileToolStripMenuItem_Click);
             // 
@@ -111,42 +111,42 @@ namespace Zork.Builder
             openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
             openFileToolStripMenuItem.ShortcutKeyDisplayString = "";
             openFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            openFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            openFileToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             openFileToolStripMenuItem.Text = "&Open File";
             openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            toolStripMenuItem3.Size = new System.Drawing.Size(164, 6);
             // 
             // saveFileToolStripMenuItem
             // 
             saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
             saveFileToolStripMenuItem.ShortcutKeyDisplayString = "";
             saveFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            saveFileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            saveFileToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             saveFileToolStripMenuItem.Text = "&Save File";
             saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            saveAsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             saveAsToolStripMenuItem.Text = "Save As";
             saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new System.Drawing.Size(177, 6);
+            toolStripMenuItem4.Size = new System.Drawing.Size(164, 6);
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             exitToolStripMenuItem.ShortcutKeyDisplayString = "";
             exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            exitToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             exitToolStripMenuItem.Text = "E&xit";
             exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -222,6 +222,7 @@ namespace Zork.Builder
             this.roomsList.Name = "roomsList";
             this.roomsList.Size = new System.Drawing.Size(305, 381);
             this.roomsList.TabIndex = 0;
+            this.roomsList.ValueMember = "Description";
             // 
             // groupBox2
             // 
