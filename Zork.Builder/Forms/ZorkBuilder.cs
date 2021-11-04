@@ -8,37 +8,97 @@ namespace Zork.Builder
 {
     public partial class ZorkBuilder : Form
     {
-        internal GameViewModel ViewModel { get; private set; }
+        bool IsGameLoaded
+        {
+            get
+            {
+                return _viewModel.IsGameLoaded;
+            }
+            set
+            {
+                _viewModel.IsGameLoaded = value;
+
+                foreach(var control in _gameDependentControls)
+                {
+                    control.Enabled = _viewModel.IsGameLoaded;
+                }
+
+                foreach(var menuItem in _gameDependentMenuItem)
+                {
+                    menuItem.Enabled = _viewModel.IsGameLoaded;
+                }
+            }
+        }
+
+        GameViewModel ViewModel 
+        {
+            get => _viewModel;
+            
+            set
+            {
+                if(_viewModel != value)
+                {
+                    _viewModel = value;
+                    gameViewModelBindingSource.DataSource = _viewModel;
+                }
+
+            } 
+        }
 
         public ZorkBuilder()
         {
             InitializeComponent();
             ViewModel = new GameViewModel();
+
+            _gameDependentControls = new Control[]
+            {
+                roomsGroupBox,
+                roomAttributesGroupBox
+            };
+
+            _gameDependentMenuItem = new ToolStripMenuItem[]
+            {
+                saveFileToolStripMenuItem,
+                saveAsToolStripMenuItem,
+                runToolStripMenuItem
+                
+            };
+
+            IsGameLoaded = false;
         }
 
         #region Menu Strip Items
         private void newFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Not yet implemented");
         }
 
         private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            if (openFileDialog.ShowDialog( ) == DialogResult.OK)
             {
-                string jsonString = File.ReadAllText(openFileDialog.FileName);
-                Game game = JsonConvert.DeserializeObject<Game>(jsonString);
+                try
+                {
+
+                    string jsonString = File.ReadAllText(openFileDialog.FileName);
+                    ViewModel.Game = JsonConvert.DeserializeObject<Game>(jsonString);
+                    IsGameLoaded = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Zork Builder", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Not yet implemented");
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Not yet implemented");
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -48,19 +108,23 @@ namespace Zork.Builder
         #endregion Menu Strip
 
         #region Buttons
-        private void Add_Click(object sender, EventArgs e)
+        private void addRoomButton_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Not yet implemented");
         }
 
-        private void Delete_Click(object sender, EventArgs e)
+        private void deleteRoomButton_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Not yet implemented");
         }
         #endregion Buttons
 
 
-        private GameViewModel _viewModel;
+        GameViewModel _viewModel;
+        Control[] _gameDependentControls;
+        ToolStripMenuItem[] _gameDependentMenuItem;
+
+
     }
 
 }

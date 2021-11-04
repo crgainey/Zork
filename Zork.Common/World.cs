@@ -4,13 +4,16 @@ using System.Runtime.Serialization;
 
 namespace Zork
 {
-    public class World : INotifyPropertyChanged
+    public class World 
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public Room[] Rooms { get; set; }
+        public List<Room> Rooms { get; set; }
 
         public Dictionary<string, Room> RoomsByName { get; private set; }
+
+        public World()
+        {
+            Rooms = new List<Room>();
+        }
 
         [OnDeserialized]
         void OnDeserialized(StreamingContext context)

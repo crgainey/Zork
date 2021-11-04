@@ -5,17 +5,13 @@ using Newtonsoft.Json;
 
 namespace Zork
 {
-    public class Game : INotifyPropertyChanged
+    public class Game
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public World World { get; set; }
 
         public string StartingLocation { get; set; }
 
         public string WelcomeMessage { get; set; }
-
-        public string QuitMessage { get; set; }
 
         [JsonIgnore]
         public Player Player { get; private set; }
@@ -47,7 +43,7 @@ namespace Zork
                 {
                     case Commands.QUIT:
                         Player.NumberOfMoves++;
-                        Console.WriteLine(QuitMessage);
+                        Console.WriteLine("Thank you for playing");
                         break;
 
                     case Commands.LOOK:

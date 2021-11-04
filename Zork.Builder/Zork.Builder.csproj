@@ -56,15 +56,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewModels\GameViewModel.cs" />
-    <Compile Include="ZorkBuilder.cs">
+    <Compile Include="Forms\ZorkBuilder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ZorkBuilder.Designer.cs">
+    <Compile Include="Forms\ZorkBuilder.Designer.cs">
       <DependentUpon>ZorkBuilder.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ZorkBuilder.resx">
+    <EmbeddedResource Include="Forms\ZorkBuilder.resx">
       <DependentUpon>ZorkBuilder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
