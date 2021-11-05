@@ -15,6 +15,8 @@ namespace Zork.Builder
 
         public BindingList<Room> Rooms { get; set; }
 
+        //TODO: Binding Description Binding Starting Location and Binding Welcome message
+
         public Game Game 
         {
             set

@@ -27,3 +27,5 @@ E:\Fall2021\DIG4778c\Git\Zork\Zork.Builder\obj\Debug\Zork.Builder.csproj.CopyCom
 E:\Fall2021\DIG4778c\Git\Zork\Zork.Builder\obj\Debug\Zork.Builder.exe
 E:\Fall2021\DIG4778c\Git\Zork\Zork.Builder\obj\Debug\Zork.Builder.pdb
 E:\Fall2021\DIG4778c\Git\Zork\Zork.Builder\obj\Debug\Zork.Builder.csproj.Fody.CopyLocal.cache
+E:\Fall2021\DIG4778c\Git\Zork\Zork.Builder\obj\Debug\Zork.Builder.Forms.AddRoomsForm.resources
+E:\Fall2021\DIG4778c\Git\Zork\Zork.Builder\obj\Debug\Zork.Builder.UserControls.NeighborUserControl.resources

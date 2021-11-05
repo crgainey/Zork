@@ -55,6 +55,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AddRoomsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddRoomsForm.Designer.cs">
+      <DependentUpon>AddRoomsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NeighborUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\NeighborUserControl.Designer.cs">
+      <DependentUpon>NeighborUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="Forms\ZorkBuilder.cs">
       <SubType>Form</SubType>
@@ -64,6 +76,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AddRoomsForm.resx">
+      <DependentUpon>AddRoomsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ZorkBuilder.resx">
       <DependentUpon>ZorkBuilder.cs</DependentUpon>
     </EmbeddedResource>
@@ -76,6 +91,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\NeighborUserControl.resx">
+      <DependentUpon>NeighborUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\GameViewModel.datasource" />
     <None Include="Properties\Settings.settings">
@@ -97,6 +115,7 @@
       <Name>Zork.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.1\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

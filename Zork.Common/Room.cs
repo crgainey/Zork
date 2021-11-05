@@ -18,6 +18,11 @@ namespace Zork
         [JsonProperty(PropertyName = "Neighbors")]
         public Dictionary<Directions, string> NeighborNames { get; set; }
 
+        public Room()
+        {
+
+        }
+
         public Room(string name, string description = null)
         {
             Name = name;

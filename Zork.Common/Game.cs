@@ -20,6 +20,7 @@ namespace Zork
         void OnDeserialized(StreamingContext context)
         {
             Player = new Player(World, StartingLocation);
+
         }
 
         public void Run()
