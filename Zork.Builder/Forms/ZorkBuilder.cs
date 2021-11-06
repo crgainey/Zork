@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Windows.Forms;
-using Zork;
 using System.IO;
-using Newtonsoft.Json;
-using Zork.Builder.Forms;
+using System.Windows.Forms;
 using System.Reflection;
 using System.Linq;
+using Newtonsoft.Json;
+using Zork.Builder.Forms;
+using Zork;
+using System.Collections.Generic;
+using Zork.Builder.UserControls;
 
 namespace Zork.Builder
 {
@@ -70,14 +72,19 @@ namespace Zork.Builder
             };
 
             IsGameLoaded = false;
+
+            _NeighborControlMap = new Dictionary<Directions, NeighborUserControl>
+            {
+                { Directions.NORTH, neighborNorthUserControl},
+                { Directions.SOUTH, neighborSouthUserControl},
+                { Directions.WEST, neighborWestUserControl},
+                { Directions.EAST, neighborEastUserControl}
+
+            };
         }
 
         #region Menu Strip Items
-        private void newFileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Not yet implemented");
-        }
-
+        
         private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog( ) == DialogResult.OK)
@@ -86,7 +93,16 @@ namespace Zork.Builder
                 {
                     string jsonString = File.ReadAllText(openFileDialog.FileName);
                     ViewModel.Game = JsonConvert.DeserializeObject<Game>(jsonString);
+                    ViewModel.Filename = openFileDialog.FileName;
                     IsGameLoaded = true;
+
+                    //Room selectedRoom = roomsList.SelectedItem as Room;
+                    //foreach (var entry in _NeighborControlMap)
+                    //{
+                    //    entry.Value.Room = selectedRoom;
+                    //}
+
+                    
                 }
                 catch (Exception ex)
                 {
@@ -95,23 +111,21 @@ namespace Zork.Builder
             }
         }
 
-        private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Not yet implemented");
-        }
+        private void saveFileToolStripMenuItem_Click(object sender, EventArgs e) => _viewModel.SaveGame(ViewModel.Filename);
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not yet implemented");
+            if(saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                ViewModel.Filename = saveFileDialog.FileName;
+                _viewModel.SaveGame(ViewModel.Filename);
+            }
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) => Close();
+
         #endregion Menu Strip
 
-        #region Buttons
         private void addRoomButton_Click(object sender, EventArgs e)
         {
             using (AddRoomsForm addRoomsForm = new AddRoomsForm())
@@ -134,10 +148,6 @@ namespace Zork.Builder
             }
         }
 
-        private void roomsList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            deleteRoomButton.Enabled = roomsList.SelectedItem != null;
-        }
 
         private void deleteRoomButton_Click(object sender, EventArgs e)
         {
@@ -147,12 +157,21 @@ namespace Zork.Builder
                 roomsList.SelectedItem = ViewModel.Rooms.FirstOrDefault();
             }
         }
-        #endregion Buttons
 
+        private void roomsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            deleteRoomButton.Enabled = roomsList.SelectedItem != null;
+            //Room selectedRoom = roomsList.SelectedItem as Room;
+            //foreach (var entry in _NeighborControlMap)
+            //{
+            //    entry.Value.Room = selectedRoom;
+            //}
+        }
 
         GameViewModel _viewModel;
         Control[] _gameDependentControls;
         ToolStripMenuItem[] _gameDependentMenuItem;
+        readonly Dictionary<Directions, NeighborUserControl> _NeighborControlMap;
 
     }
 

@@ -5,8 +5,12 @@ using Newtonsoft.Json;
 
 namespace Zork
 {
-    public class Game
+    public class Game : INotifyPropertyChanged
     {
+#pragma warning disable CS0067
+        public event PropertyChangedEventHandler PropertyChanged;
+#pragma warning restore CS0067
+
         public World World { get; set; }
 
         public string StartingLocation { get; set; }
@@ -14,13 +18,13 @@ namespace Zork
         public string WelcomeMessage { get; set; }
 
         [JsonIgnore]
-        public Player Player { get; private set; }
+        public Player Player { get; set; }
+
 
         [OnDeserialized]
         void OnDeserialized(StreamingContext context)
         {
             Player = new Player(World, StartingLocation);
-
         }
 
         public void Run()

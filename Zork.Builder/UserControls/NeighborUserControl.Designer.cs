@@ -35,11 +35,13 @@ namespace Zork.Builder.UserControls
             // 
             // neighborComboBox
             // 
+            this.neighborComboBox.DisplayMember = "Names";
             this.neighborComboBox.FormattingEnabled = true;
             this.neighborComboBox.Location = new System.Drawing.Point(3, 30);
             this.neighborComboBox.Name = "neighborComboBox";
             this.neighborComboBox.Size = new System.Drawing.Size(153, 21);
             this.neighborComboBox.TabIndex = 3;
+            this.neighborComboBox.SelectedIndexChanged += new System.EventHandler(this.neighborComboBox_SelectedIndexChanged);
             // 
             // neighborTextBox
             // 
@@ -48,6 +50,7 @@ namespace Zork.Builder.UserControls
             this.neighborTextBox.ReadOnly = true;
             this.neighborTextBox.Size = new System.Drawing.Size(153, 20);
             this.neighborTextBox.TabIndex = 2;
+            this.neighborTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // NeighborUserControl
             // 

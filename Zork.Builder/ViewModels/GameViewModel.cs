@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
-//using Zork.Common;
+using System.IO;
+using Newtonsoft.Json;
 using Zork;
 
 namespace Zork.Builder
@@ -11,14 +12,28 @@ namespace Zork.Builder
         public event PropertyChangedEventHandler PropertyChanged;
 #pragma warning restore CS0067
 
+        public string Filename { get; set; }
+
+        public string StartingLocation 
+        { 
+            get => _game.StartingLocation;
+            set => _game.StartingLocation = value; 
+        }
+
+        public string WelcomeMessage
+        {
+            get => _game.WelcomeMessage;
+            set => _game.WelcomeMessage = value;
+        }
+
         public bool IsGameLoaded { get; set; }
 
         public BindingList<Room> Rooms { get; set; }
 
-        //TODO: Binding Description Binding Starting Location and Binding Welcome message
 
         public Game Game 
         {
+            get => _game;
             set
             {
                 if(_game != value)
@@ -27,19 +42,38 @@ namespace Zork.Builder
                     if(_game != null)
                     {
                         Rooms = new BindingList<Room>(_game.World.Rooms);
+                        StartingLocation = _game.StartingLocation;
+                        WelcomeMessage = _game.WelcomeMessage;
                     }
                     else
                     {
                         Rooms = new BindingList<Room>(Array.Empty<Room>());
+                        StartingLocation = null;
+                        WelcomeMessage = null;
                     }
                 }
             }
         }
+        public GameViewModel(Game game = null) => Game = game;
 
-        public GameViewModel(Game game = null)
+        public void SaveGame(string filename)
         {
-            Game = game;
+            if (!IsGameLoaded)
+            {
+                throw new InvalidOperationException("No game loaded.");
+            }
+
+            JsonSerializer serializer = new JsonSerializer
+            {
+                Formatting = Formatting.Indented
+            };
+            using (StreamWriter streamWriter = new StreamWriter(filename))
+            using (JsonWriter jsonWriter = new JsonTextWriter(streamWriter))
+            {
+                serializer.Serialize(jsonWriter, _game);
+            }
         }
+
 
         Game _game;
     }
