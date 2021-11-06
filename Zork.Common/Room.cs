@@ -16,7 +16,7 @@ namespace Zork
         public string Description { get; set; }
 
         [JsonIgnore]
-        public Dictionary<Directions, Room> Neighbors{ get; private set; }
+        public Dictionary<Directions, Room> Neighbors{ get; set; }
 
         [JsonProperty(PropertyName = "Neighbors")]
         public Dictionary<Directions, string> NeighborNames { get; set; }

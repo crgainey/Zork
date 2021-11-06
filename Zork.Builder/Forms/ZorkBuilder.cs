@@ -96,13 +96,13 @@ namespace Zork.Builder
                     ViewModel.Filename = openFileDialog.FileName;
                     IsGameLoaded = true;
 
-                    //Room selectedRoom = roomsList.SelectedItem as Room;
-                    //foreach (var entry in _NeighborControlMap)
-                    //{
-                    //    entry.Value.Room = selectedRoom;
-                    //}
+                    Room selectedRoom = roomsList.SelectedItem as Room;
+                    foreach (var entry in _NeighborControlMap)
+                    {
+                        entry.Value.Room = selectedRoom;
+                    }
 
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -161,11 +161,11 @@ namespace Zork.Builder
         private void roomsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             deleteRoomButton.Enabled = roomsList.SelectedItem != null;
-            //Room selectedRoom = roomsList.SelectedItem as Room;
-            //foreach (var entry in _NeighborControlMap)
-            //{
-            //    entry.Value.Room = selectedRoom;
-            //}
+            Room selectedRoom = roomsList.SelectedItem as Room;
+            foreach (var entry in _NeighborControlMap)
+            {
+                entry.Value.Room = selectedRoom;
+            }
         }
 
         GameViewModel _viewModel;

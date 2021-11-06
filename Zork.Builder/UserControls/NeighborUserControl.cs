@@ -25,7 +25,8 @@ namespace Zork.Builder.UserControls
                         _rooms = value;
                         if (_rooms != null)
                         {
-                            var neighbors = new List<Room>(_viewModel.Rooms);
+                            //var neighbors = new List<Room>(_viewModel.Rooms); // This one gives a null error
+                            var neighbors = new List<Room>();
                             neighbors.Insert(0, NoNeighbor);
                             neighborComboBox.SelectedIndexChanged -= neighborComboBox_SelectedIndexChanged;
                             neighborComboBox.DataSource = neighbors;
