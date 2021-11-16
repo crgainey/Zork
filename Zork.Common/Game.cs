@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
@@ -17,9 +18,26 @@ namespace Zork
 
         public string WelcomeMessage { get; set; }
 
+        public string ExitMessage { get; set; }
+
+        public IOutputService Output { get; set; }
+
+        public IInputService Input { get; set; }
+
         [JsonIgnore]
         public Player Player { get; set; }
+        [JsonIgnore]
+        public bool IsRunning { get; set; }
 
+
+        public static Game Load(string filename, IInputService input, IOutputService output)
+        {
+            Game game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(filename));
+            game.Player = new Player(game.World, game.StartingLocation);
+            game.Output = output;
+            return game;
+
+        }
 
         [OnDeserialized]
         void OnDeserialized(StreamingContext context)
@@ -27,60 +45,59 @@ namespace Zork
             Player = new Player(World, StartingLocation);
         }
 
-        public void Run()
+        public void Start(IInputService input, IOutputService output)
         {
-            Console.WriteLine(WelcomeMessage);
+            Assert.IsNotNull(input);
+            Input = input;
+            Input.InputRecieved += InputRecievedHandler;
 
+            Assert.IsNotNull(output);
+            Output = output;
+
+            IsRunning = true;
+        }
+
+        private void InputRecievedHandler(object sender, string commandString)
+        {
             Commands command = Commands.UNKNOWN;
-            while (command != Commands.QUIT)
+            command = ToCommand(commandString);
+            switch (command)
             {
-                Console.Write($"{Player.CurrentRoom}\n> ");
+                case Commands.QUIT:
+                    Player.NumberOfMoves++;
+                    Output.WriteLine(ExitMessage);
+                    IsRunning = false;
+                    break;
 
-                if (Player.PreviousRoom != Player.CurrentRoom)
-                {
-                    Console.WriteLine(Player.CurrentRoom.Description);
-                    Player.PreviousRoom = Player.CurrentRoom;
-                }
+                case Commands.LOOK:
+                    Player.NumberOfMoves++;
+                    Output.WriteLine(Player.Location.Description);
+                    break;
 
-                command = ToCommand(Console.ReadLine().Trim());
-
-                switch (command)
-                {
-                    case Commands.QUIT:
+                case Commands.NORTH:
+                case Commands.SOUTH:
+                case Commands.EAST:
+                case Commands.WEST:
+                    Directions direction = (Directions)command;
+                    if (Player.Move(direction) == false)
+                    {
                         Player.NumberOfMoves++;
-                        Console.WriteLine("Thank you for playing");
-                        break;
+                        Output.WriteLine("The way is shut!");
+                    }
+                    break;
+                case Commands.SCORE:
+                    Player.NumberOfMoves++;
+                    Output.WriteLine($"Your score would be {Player.CurrentScore}, in {Player.NumberOfMoves} move(s).");
+                    break;
+                case Commands.REWARD:
+                    Player.NumberOfMoves++;
+                    Player.CurrentScore++;
+                    Output.WriteLine($"Your score is now {Player.CurrentScore}.");
+                    break;
 
-                    case Commands.LOOK:
-                        Player.NumberOfMoves++;
-                        Console.WriteLine(Player.CurrentRoom.Description);
-                        break;
-
-                    case Commands.NORTH:
-                    case Commands.SOUTH:
-                    case Commands.EAST:
-                    case Commands.WEST:
-                        Directions direction = (Directions)command;
-                        if (Player.Move(direction) == false)
-                        {
-                            Player.NumberOfMoves++;
-                            Console.WriteLine("The way is shut!");
-                        }
-                        break;
-                    case Commands.SCORE:
-                        Player.NumberOfMoves++;
-                        Console.WriteLine($"Your score would be {Player.CurrentScore}, in {Player.NumberOfMoves} move(s).");
-                        break;
-                    case Commands.REWARD:
-                        Player.NumberOfMoves++;
-                        Player.CurrentScore++;
-                        Console.WriteLine($"Your score is now {Player.CurrentScore}.");
-                        break;
-
-                    default:
-                        Console.WriteLine("Unknown command.");
-                        break;
-                }
+                default:
+                    Output.WriteLine("Unknown command.");
+                    break;
             }
         }
 

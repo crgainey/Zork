@@ -6,6 +6,15 @@ namespace Zork
     public static class Assert
     {
         [Conditional("DEBUG")]
+        public static void IsNotNull(object obj, string message = null)
+        {
+            if (obj is null)
+            {
+                throw new ArgumentNullException(message);
+            }
+        }
+
+        [Conditional("DEBUG")]
 
         public static void IsTrue(bool expression, string message = null)
         {

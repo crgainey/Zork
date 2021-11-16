@@ -140,5 +140,6 @@
     }
   },
   "StartingLocation": "West of House",
-  "WelcomeMessage": "Welcome to Zork!"
+  "WelcomeMessage": "Welcome to Zork!",
+  "ExitMessage" :  "Thank you for playing!"
 }
