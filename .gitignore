@@ -1,11 +1,13 @@
 .vs/
-.csproj/
-.sln/
 **/bin/
 **/obj/
 **/Library/
 **/Logs/
 **/Temp/
 **/UserSettings/
+.csproj/
+.vsconfig/
+Zork.Unity.sln/
+.collabignore/
 
 
