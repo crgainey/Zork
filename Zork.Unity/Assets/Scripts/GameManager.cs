@@ -1,9 +1,7 @@
 using Newtonsoft.Json;
 using UnityEngine;
 using Zork;
-using Zork.Common;
 using TMPro;
-using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -44,8 +42,12 @@ public class GameManager : MonoBehaviour
     {
         if (_game.IsRunning == false)
         {
+
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
+#endif
         }
     }
 

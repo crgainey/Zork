@@ -19,9 +19,12 @@ public class UnityInputService : MonoBehaviour, IInputService
             {
                 string inputString = InputField.text.Trim().ToUpper();
                 InputRecieved?.Invoke(this, inputString);
+                InputField.Select();
+                InputField.ActivateInputField();
             }
 
             InputField.text = string.Empty;
+
         }
     }
 
