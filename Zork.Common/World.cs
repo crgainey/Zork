@@ -1,33 +1,38 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Runtime.Serialization;
 
 namespace Zork
 {
-    public class World
+    public class World : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public List<Room> Rooms { get; set; }
 
-        public Dictionary<string, Room> RoomsByName { get; private set; }
+        [JsonIgnore]
+        public IReadOnlyDictionary<string, Room> RoomsByName => _roomsByName;
 
         public World()
         {
             Rooms = new List<Room>();
+            _roomsByName = new Dictionary<string, Room>();
         }
 
         [OnDeserialized]
-        void OnDeserialized(StreamingContext context)
+        private void OnDeserialized(StreamingContext context)
         {
-            RoomsByName = new Dictionary<string, Room>();
-            foreach (Room room in Rooms)
-            {
-                RoomsByName.Add(room.Name, room);
-            }
+            _roomsByName = Rooms.ToDictionary(room => room.Name, room => room);
 
             foreach (Room room in Rooms)
             {
-                room.UpdateNeightbors(this);
+                room.UpdateNeighbors(this);
             }
         }
+
+        private Dictionary<string, Room> _roomsByName;
     }
 
 }

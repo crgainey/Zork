@@ -5,45 +5,75 @@ using System.ComponentModel;
 
 namespace Zork
 {
-    public class Room : INotifyPropertyChanged
+    public class Room : IEquatable<Room>, INotifyPropertyChanged
     {
 #pragma warning disable CS0067
         public event PropertyChangedEventHandler PropertyChanged;
 #pragma warning restore CS0067
 
+        [JsonProperty(Order = 1)]
         public string Name { get; set; }
 
+        [JsonProperty(Order = 2)]
         public string Description { get; set; }
 
+        [JsonProperty(PropertyName = "Neighbors", Order = 3)]
+        private Dictionary<Directions, string> NeighborNames { get; set; } = new Dictionary<Directions, string>();
+
         [JsonIgnore]
-        public Dictionary<Directions, Room> Neighbors{ get; set; }
+        public IReadOnlyDictionary<Directions, Room> Neighbors => _neighbors;
 
-        [JsonProperty(PropertyName = "Neighbors")]
-        public Dictionary<Directions, string> NeighborNames { get; set; }
-
-        public Room()
-        {
-        }
-
-        public Room(string name, string description = null, Dictionary<Directions, string> neighborNames = null)
+        public Room(string name = null)
         {
             Name = name;
-            Description = description;
-            NeighborNames = neighborNames;
-            Neighbors = new Dictionary<Directions, Room>();
         }
 
-
-        public void UpdateNeightbors(World world)
+        public static bool operator ==(Room lhs, Room rhs)
         {
-            Neighbors = new Dictionary<Directions, Room>();
-            foreach(var pair in NeighborNames)
+            if (ReferenceEquals(lhs, rhs))
             {
-                (Directions direction, string name) = (pair.Key, pair.Value);
-                Neighbors.Add(direction, world.RoomsByName[name]);
+                return true;
+            }
+
+            if (lhs is null || rhs is null)
+            {
+                return false;
+            }
+
+            return string.Compare(lhs.Name, rhs.Name, ignoreCase: true) == 0;
+        }
+
+        public static bool operator !=(Room lhs, Room rhs) => !(lhs == rhs);
+
+        public override bool Equals(object obj) => obj is Room room && this == room;
+
+        public bool Equals(Room other) => this == other;
+
+        public override string ToString() => Name;
+
+        public override int GetHashCode() => Name.GetHashCode();
+
+        public void UpdateNeighbors(World world)
+        {
+            _neighbors.Clear();
+            foreach (var entry in NeighborNames)
+            {
+                _neighbors.Add(entry.Key, world.RoomsByName[entry.Value]);
             }
         }
 
-        public override string ToString() => Name;
+        public void RemoveNeighbor(Directions direction)
+        {
+            _neighbors.Remove(direction);
+            NeighborNames.Remove(direction);
+        }
+
+        public void AssignNeighbor(Directions direction, Room neighbor)
+        {
+            _neighbors[direction] = neighbor;
+            NeighborNames[direction] = neighbor.Name;
+        }
+
+        private Dictionary<Directions, Room> _neighbors = new Dictionary<Directions, Room>();
     }
 }

@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zork", "Zork\Zork.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zork.Common", "Zork.Common\Zork.Common.csproj", "{D370687D-98DA-49F6-95CF-E27A8A9F5896}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zork.Builder", "Zork.Builder\Zork.Builder.csproj", "{19AF31ED-7269-4BD4-A698-CF6442992965}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{D370687D-98DA-49F6-95CF-E27A8A9F5896}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D370687D-98DA-49F6-95CF-E27A8A9F5896}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D370687D-98DA-49F6-95CF-E27A8A9F5896}.Release|Any CPU.Build.0 = Release|Any CPU
-		{19AF31ED-7269-4BD4-A698-CF6442992965}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19AF31ED-7269-4BD4-A698-CF6442992965}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19AF31ED-7269-4BD4-A698-CF6442992965}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19AF31ED-7269-4BD4-A698-CF6442992965}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

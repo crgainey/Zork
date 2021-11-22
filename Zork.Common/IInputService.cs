@@ -5,5 +5,6 @@ namespace Zork
     public interface IInputService
     {
         event EventHandler<string> InputRecieved;
+
     }
 }

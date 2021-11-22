@@ -15,22 +15,16 @@ namespace Zork
             ConsoleInputService input = new ConsoleInputService();
             ConsoleOutputService output = new ConsoleOutputService();
 
-            output.WriteLine(game.WelcomeMessage);
+            output.WriteLine(string.IsNullOrWhiteSpace(game.WelcomeMessage) ? "Welcome to Zork!" : game.WelcomeMessage);
             game.Start(input,output);
+            Game.Look(game);
 
             while (game.IsRunning)
             {
-                output.Write($"{game.Player.Location}\n> ");
-                
-                if (game.Player.PreviousRoom != game.Player.Location)
-                {
-                    output.WriteLine(game.Player.Location.Description);
-                    game.Player.PreviousRoom = game.Player.Location;
-                }
-
+                output.Write("\n>");
                 input.ProcessInput();
             }
-
+            
         }
 
         enum CommandLineArguments
